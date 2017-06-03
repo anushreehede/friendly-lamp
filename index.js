@@ -63,8 +63,47 @@ var task2 = function() {
 };
 task2(); // Run Task
 
-// TODO: Task three, mathematics and colors
+// TODO: Task three, mathematics and colors.
 
 task3 = function() {
-	
+	// Let's play with objects, and practice how to organise your code.
+	// JavaScript is one of the most flexible languages out there, and
+	// this often results in people getting confused how to write js code
+	// that is easy to understand and modify. Try to read the following code snippet
+	// and modify it to perform what the further instructions say.
+	var getColorString = function(color) {
+		return "rgb(" + color.red + "," + color.green + "," + color.blue + ")";
+	}
+	var getColor = function(red, green, blue){
+		return {
+			red: red,
+			green: green,
+			blue: blue,
+		};
+	}
+	var getColorInBetween = function(color1, color2){
+		var getMiddleNumber = function(num1, num2, percent){
+			var ratio = percent/100;
+			return Math.floor(num1*ratio + num2*(1-ratio));
+		}
+		var red = getMiddleNumber(color1.red, color2.red, 50);
+		var green = getMiddleNumber(color1.green, color2.green, 50);
+		var blue = getMiddleNumber(color1.blue, color2.blue, 50);
+		return getColor(red, green, blue);
+	}
+
+	var color1 = getColor(250,100,200);
+	var color2 = getColor(200,250,250);
+	var color3 = getColorInBetween(color1,color2);
+	console.log(color3);
+	// Notice that we are creating 2 colors, and then finding a color in between them.
+	// TODO: Add an argument called percent to getColorInBetween() so that we don't
+	// have to get the 'center' color in between color1 and color2, and can get anything.
+};
+task3(); // Run task
+
+// TODO: Task four, combine it all, all by yourself.
+
+var task4 = function() {
+
 };
