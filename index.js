@@ -2,6 +2,9 @@
 // For simplicity, you will find several small tasks
 // for you to accomplish here, each marked with // TODO:
 
+// Create a commit after each task, so that you can look through the code
+// later and that when you upload it to GitHub, we can see your progress as well.
+
 // TODO: Task one, random background color generation.
 
 var task1 = function() {
@@ -23,7 +26,6 @@ var task1 = function() {
 	var body = document.getElementsByTagName('body')[0];
 	body.style.background = getRandomColor();
 };
-task1(); // Run Task
 
 // TODO: Task two, countdown timer.
 
@@ -43,8 +45,7 @@ var task2 = function() {
 	// the number of seconds remaining.
 	var body = document.getElementsByTagName('body')[0];
 	body.addEventListener("keyup", function(keyevent) {
-	    console.log("Pressed");
-	    if (keyevent.keyCode == 13) {
+	    if (keyevent.keyCode == 13) { // enter key keycode
 	        startTimer(5);
 	        return false;
 	    }
@@ -61,7 +62,6 @@ var task2 = function() {
 		}, 1000);
 	};
 };
-task2(); // Run Task
 
 // TODO: Task three, mathematics and colors.
 
@@ -95,15 +95,43 @@ task3 = function() {
 	var color1 = getColor(250,100,200);
 	var color2 = getColor(200,250,250);
 	var color3 = getColorInBetween(color1,color2);
-	console.log(color3);
+	console.log(color3); // See the output in JavaScript Console.
 	// Notice that we are creating 2 colors, and then finding a color in between them.
 	// TODO: Add an argument called percent to getColorInBetween() so that we don't
 	// have to get the 'center' color in between color1 and color2, and can get anything.
 };
-task3(); // Run task
 
 // TODO: Task four, combine it all, all by yourself.
 
 var task4 = function() {
+	// Here, you will write/copy from above code to achieve the following:
+	// Create a timer triggered by the <enter> key that changes the background
+	// color of the page with each second, except, here's the deal:
+	// The color goes from color1 slowly to color2, as the time passes.
+	// Example: black, dark grey, medium gray, light grey, white.
 
+	// Some sample code could look like:
+	var startColor = getColor(100,200,250);
+	var endColor = getColor(200,250,100);
+	var body = document.getElementsByTagName('body')[0];
+	body.addEventListener("keyup", function(keyevent) {
+	    if (keyevent.keyCode == 13) { // enter key keycode
+	        startTimer(5);
+	        return false;
+	    }
+	});
+
+	// Complete this code, and then uncomment the line at the end of the file to
+	// run this task. Also, comment the other three tasks so that they do not run.
+	// Thereby, you can focus on doing this task alone.
+
+	// You are almost there. I know this task is slightly larger, but doing this means
+	// you can now understand JavaScript code and thus, can go ahead to create web apps
+	// and interactive web sites that you want. Best of luck!
 };
+
+// Run Tasks
+task1();
+task2();
+task3();
+// task4();
