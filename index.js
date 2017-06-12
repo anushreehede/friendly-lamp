@@ -17,12 +17,12 @@ var task1 = function() {
 		
 		// TODO: Assign each of the following a random value between 200 and 255.
 		// READ: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-		var red = 250;
-		var green = 250;
-		var blue = 250;
+		var red = Math.floor(Math.random() * 256 + 200);
+		var green = Math.floor(Math.random() * 256 + 200);
+		var blue = Math.floor(Math.random() * 256 + 200);
 		var colorstring = "rgb(" + red + "," + green + "," + blue + ")";
 		return colorstring;
-	}
+	};
 	var body = document.getElementsByTagName('body')[0];
 	body.style.background = getRandomColor();
 };
@@ -55,6 +55,8 @@ var task2 = function() {
 		var interval = setInterval(function(){
 			seconds--;
 			// TODO: Your code goes here.
+            task1();
+            timedisplay.innerHTML = seconds;
 			if (seconds < 0){
 				clearInterval(interval); // delete the timer
 				timedisplay.innerHTML="Hurray!"; //display finishing message
@@ -73,28 +75,28 @@ task3 = function() {
 	// and modify it to perform what the further instructions say.
 	var getColorString = function(color) {
 		return "rgb(" + color.red + "," + color.green + "," + color.blue + ")";
-	}
+	};
 	var getColor = function(red, green, blue){
 		return {
 			red: red,
 			green: green,
 			blue: blue,
 		};
-	}
-	var getColorInBetween = function(color1, color2){
+	};
+	var getColorInBetween = function(color1, color2, percent){
 		var getMiddleNumber = function(num1, num2, percent){
 			var ratio = percent/100;
 			return Math.floor(num1*ratio + num2*(1-ratio));
 		}
-		var red = getMiddleNumber(color1.red, color2.red, 50);
-		var green = getMiddleNumber(color1.green, color2.green, 50);
-		var blue = getMiddleNumber(color1.blue, color2.blue, 50);
+		var red = getMiddleNumber(color1.red, color2.red, percent);
+		var green = getMiddleNumber(color1.green, color2.green, percent);
+		var blue = getMiddleNumber(color1.blue, color2.blue, percent);
 		return getColor(red, green, blue);
-	}
+	};
 
 	var color1 = getColor(250,100,200);
 	var color2 = getColor(200,250,250);
-	var color3 = getColorInBetween(color1,color2);
+	var color3 = getColorInBetween(color1,color2, 65);
 	console.log(color3); // See the output in JavaScript Console.
 	// Notice that we are creating 2 colors, and then finding a color in between them.
 	// TODO: Add an argument called percent to getColorInBetween() so that we don't
@@ -111,8 +113,32 @@ var task4 = function() {
 	// Example: black, dark grey, medium gray, light grey, white.
 
 	// Some sample code could look like:
+    var getColor = function(red, green, blue){
+		return {
+			red: red,
+			green: green,
+			blue: blue,
+		};
+	};
 	var startColor = getColor(100,200,250);
 	var endColor = getColor(200,250,100);
+    
+    var getColorString = function(color) {
+		return "rgb(" + color.red + "," + color.green + "," + color.blue + ")";
+	};
+	
+	var getColorInBetween = function(color1, color2, percent){
+		var getMiddleNumber = function(num1, num2, percent){
+			var ratio = percent/100;
+			return Math.floor(num1*ratio + num2*(1-ratio));
+		}
+		var red = getMiddleNumber(color1.red, color2.red, percent);
+		var green = getMiddleNumber(color1.green, color2.green, percent);
+		var blue = getMiddleNumber(color1.blue, color2.blue, percent);
+		return getColor(red, green, blue);
+	};
+    
+	
 	var body = document.getElementsByTagName('body')[0];
 	body.addEventListener("keyup", function(keyevent) {
 	    if (keyevent.keyCode == 13) { // enter key keycode
@@ -120,6 +146,25 @@ var task4 = function() {
 	        return false;
 	    }
 	});
+    var timedisplay = document.getElementById('timedisplay');
+	var startTimer = function(seconds){
+		var interval = setInterval(function(){
+			seconds--;
+			// TODO: Your code goes here.
+            var midColor = getColorInBetween(startColor,endColor, 100/seconds);
+            var colorString = getColorString(midColor);
+            var body = document.getElementsByTagName('body')[0];
+	        body.style.background = colorString;
+            timedisplay.innerHTML = seconds;
+			if (seconds < 0){
+				clearInterval(interval); // delete the timer
+				timedisplay.innerHTML="Hurray!"; //display finishing message
+			}
+		}, 1000);
+    
+	};
+    
+    
 
 	// Complete this code, and then uncomment the line at the end of the file to
 	// run this task. Also, comment the other three tasks so that they do not run.
@@ -131,7 +176,7 @@ var task4 = function() {
 };
 
 // Run Tasks
-task1();
-task2();
-task3();
-// task4();
+//task1();
+//task2();
+//task3();
+task4();
