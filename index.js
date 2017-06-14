@@ -1,4 +1,4 @@
-// This is a javascript file, nothing scary here.
+ // This is a javascript file, nothing scary here.
 // For simplicity, you will find several small tasks
 // for you to accomplish here, each marked with // TODO:
 
@@ -17,9 +17,9 @@ var task1 = function() {
 		
 		// TODO: Assign each of the following a random value between 200 and 255.
 		// READ: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-		var red = Math.floor(Math.random() * 256 + 200);
-		var green = Math.floor(Math.random() * 256 + 200);
-		var blue = Math.floor(Math.random() * 256 + 200);
+		var red = Math.floor(Math.random() * 56 + 200);
+		var green = Math.floor(Math.random() * 56 + 200);
+		var blue = Math.floor(Math.random() * 56 + 200);
 		var colorstring = "rgb(" + red + "," + green + "," + blue + ")";
 		return colorstring;
 	};
@@ -151,7 +151,8 @@ var task4 = function() {
 		var interval = setInterval(function(){
 			seconds--;
 			// TODO: Your code goes here.
-            var midColor = getColorInBetween(startColor,endColor, 100/seconds);
+            var percent = 100 - (seconds+1)*20;
+            var midColor = getColorInBetween(startColor,endColor, percent);
             var colorString = getColorString(midColor);
             var body = document.getElementsByTagName('body')[0];
 	        body.style.background = colorString;
